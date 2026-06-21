@@ -14,10 +14,13 @@ export default function Hero({ t, lang }: HeroProps) {
 
   // Load image via JS — handles browser cache correctly
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImgLoaded(true);
-    img.src = "/herolight.webp";
-    if (img.complete) setImgLoaded(true);
+    const img = document.querySelector(".hero-img") as HTMLImageElement;
+    if (img?.complete) {
+      setImgLoaded(true);
+    } else {
+      const timer = setTimeout(() => setImgLoaded(true), 100);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   // Reveal text on scroll

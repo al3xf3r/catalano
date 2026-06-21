@@ -14,8 +14,17 @@ export default function Servizi({ t }: Props) {
     refs.current.forEach((el, i) => {
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([e]) => { if (e.isIntersecting) setTimeout(() => el.classList.add("visible"), i * 80); },
-        { threshold: 0.1 }
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            // Stagger: ogni card appare 150ms dopo la precedente
+            setTimeout(() => {
+              el.style.opacity = "1";
+              el.style.transform = "translateY(0)";
+            }, i * 150);
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
       );
       obs.observe(el);
       return () => obs.disconnect();
@@ -36,7 +45,11 @@ export default function Servizi({ t }: Props) {
           padding:2.5rem 2rem;
           border-right:1px solid rgba(184,144,42,0.18);
           border-bottom:1px solid rgba(184,144,42,0.18);
-          transition:background 0.3s;
+          transition: background 0.3s ease;
+          /* Start hidden */
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
         }
         .servizi-item:hover { background:rgba(184,144,42,0.04); }
         .serv-title {
@@ -63,7 +76,11 @@ export default function Servizi({ t }: Props) {
         {t.servizi.items.map((item, i) => {
           const Icon = icons[i] || Gift;
           return (
-            <div key={i} ref={el => { refs.current[i] = el; }} className="servizi-item reveal">
+            <div
+              key={i}
+              ref={el => { refs.current[i] = el; }}
+              className="servizi-item"
+            >
               <div style={{ color:"var(--gold)", marginBottom:"1.25rem" }}>
                 <Icon size={22} strokeWidth={1.5} />
               </div>

@@ -8,7 +8,7 @@ import type { Dict, Lang } from "@/lib/i18n";
 interface NavbarProps { t: Dict; lang: Lang; }
 
 export default function Navbar({ t, lang }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(true); // always solid = always readable
+  const [scrolled, setScrolled] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useLayoutEffect(() => {
@@ -26,8 +26,6 @@ export default function Navbar({ t, lang }: NavbarProps) {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const otherLang = lang === "it" ? "en" : "it";
-
   const navLinks = [
     { href: "#gioielleria", label: t.nav.gioielleria },
     { href: "#brand",       label: t.nav.brand },
@@ -43,21 +41,17 @@ export default function Navbar({ t, lang }: NavbarProps) {
         .nav-root {
           position: fixed; top: 0; left: 0; right: 0; z-index: 100;
           height: 68px; display: flex; align-items: center;
-          /* Always solid and readable */
           background: rgba(245,240,232,0.96);
           backdrop-filter: blur(14px);
           border-bottom: 1px solid rgba(184,144,42,0.12);
           transition: box-shadow 0.3s ease;
         }
-        .nav-root.scrolled {
-          box-shadow: 0 2px 16px rgba(28,26,23,0.06);
-        }
+        .nav-root.scrolled { box-shadow: 0 2px 16px rgba(28,26,23,0.06); }
         .nav-inner {
           width: 100%; max-width: 1400px; margin: 0 auto;
           padding: 0 2.5rem;
           display: flex; align-items: center; justify-content: space-between;
         }
-        /* Links always dark */
         .nav-link {
           font-family: var(--font-jost);
           font-size: 0.6875rem; font-weight: 400;
@@ -66,11 +60,6 @@ export default function Navbar({ t, lang }: NavbarProps) {
           opacity: 0.6; transition: opacity 0.2s, color 0.2s;
         }
         .nav-link:hover { opacity: 1; color: var(--gold); }
-        .nav-lang {
-          font-family: var(--font-jost); font-size: 0.6875rem; font-weight: 400;
-          letter-spacing: 0.18em; text-transform: uppercase;
-          text-decoration: none; color: var(--gold);
-        }
         .nav-ham {
           background: none; border: none; cursor: pointer;
           color: var(--charcoal); display: flex; align-items: center; padding: 6px;
@@ -84,8 +73,6 @@ export default function Navbar({ t, lang }: NavbarProps) {
           text-decoration: none; transition: background 0.2s; white-space: nowrap;
         }
         .nav-wa:hover { background: var(--gold-champagne); }
-
-        /* Mobile overlay */
         .mobile-menu {
           position: fixed; inset: 0; z-index: 99;
           background: rgba(245,240,232,0.98);
@@ -112,7 +99,7 @@ export default function Navbar({ t, lang }: NavbarProps) {
 
       <nav className={`nav-root${scrolled ? " scrolled" : ""}`}>
         <div className="nav-inner">
-          <Link href={`/${lang}`} style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
             <img src="/logo.webp" alt="Gioielleria Catalano" style={{ height: "34px", width: "auto" }} />
           </Link>
 
@@ -121,7 +108,6 @@ export default function Navbar({ t, lang }: NavbarProps) {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexShrink: 0 }}>
-            <Link href={`/${otherLang}`} className="nav-lang">{otherLang.toUpperCase()}</Link>
             <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" className="nav-wa hidden lg:inline-flex">
               <MessageCircle size={13} /> WhatsApp
             </a>
