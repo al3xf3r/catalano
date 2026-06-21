@@ -58,7 +58,7 @@ export default function Brands({ t }: Props) {
           flex-shrink:0; width:190px; height:84px;
           display:flex; align-items:center; justify-content:center;
           border:1px solid rgba(184,144,42,0.18);
-          padding:1.125rem 1.75rem;
+          padding:0.625rem 1rem;
           background:#f5f0e8;
           transition: box-shadow 0.3s, border-color 0.3s;
           cursor:default;
