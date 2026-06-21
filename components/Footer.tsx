@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Instagram, Facebook, MessageCircle } from "lucide-react";
 import type { Dict, Lang } from "@/lib/i18n";
 
@@ -103,11 +102,7 @@ export default function Footer({ t, lang }: Props) {
             <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" className="ft-link" style={{ display:"flex", alignItems:"center", gap:"0.5rem" }}>
               <MessageCircle size={13} strokeWidth={1.5} /> WhatsApp
             </a>
-            <div style={{ marginTop:"2rem" }}>
-              <p className="ft-heading">Lingua</p>
-              <Link href="/it" className="ft-link">Italiano</Link>
-              <Link href="/en" className="ft-link">English</Link>
-            </div>
+
           </div>
         </div>
 
