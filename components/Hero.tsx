@@ -14,13 +14,9 @@ export default function Hero({ t, lang }: HeroProps) {
 
   // Load image via JS — handles browser cache correctly
   useEffect(() => {
-    const img = document.querySelector(".hero-img") as HTMLImageElement;
-    if (img?.complete) {
-      setImgLoaded(true);
-    } else {
-      const timer = setTimeout(() => setImgLoaded(true), 100);
-      return () => clearTimeout(timer);
-    }
+    // Fixed delay — animazione parte sempre dopo 500ms indipendentemente dalla cache
+    const timer = setTimeout(() => setImgLoaded(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   // Reveal text on scroll
@@ -51,14 +47,15 @@ export default function Hero({ t, lang }: HeroProps) {
         .hero-img {
           width: 100%; height: 100%;
           object-fit: cover; object-position: center center;
+          display: block;
+          opacity: 0;
+          transform: scale(1.05);
+          transition: opacity 1.2s cubic-bezier(0.22,1,0.36,1),
+                      transform 1.6s cubic-bezier(0.22,1,0.36,1);
+          will-change: opacity, transform;
         }
         @media (max-width: 640px) {
           .hero-img { object-position: right center; }
-          display: block;
-          opacity: 0;
-          transform: scale(1.06);
-          transition: opacity 1.4s cubic-bezier(0.22,1,0.36,1),
-                      transform 1.8s cubic-bezier(0.22,1,0.36,1);
         }
         .hero-img.loaded {
           opacity: 1;
