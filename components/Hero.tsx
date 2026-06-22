@@ -151,16 +151,16 @@ export default function Hero({ t, lang }: HeroProps) {
           <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" style={{
             display: "inline-flex", alignItems: "center", gap: "0.625rem",
             padding: "1rem 2rem",
-            background: "var(--gold)", color: "#fff",
+            background: "#fff", color: "var(--gold)",
             fontFamily: "var(--font-jost)",
             fontSize: "0.6875rem", fontWeight: 400,
             letterSpacing: "0.2em", textTransform: "uppercase",
             textDecoration: "none", border: "none",
             whiteSpace: "nowrap",
-            transition: "background 0.25s ease",
+            transition: "background 0.25s ease, color 0.25s ease",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "var(--gold-champagne)")}
-          onMouseLeave={e => (e.currentTarget.style.background = "var(--gold)")}
+          onMouseEnter={e => { e.currentTarget.style.background = "var(--ivory)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "#fff"; }}
           >
             <WhatsAppIcon size={15} />
             {t.hero.cta2}
