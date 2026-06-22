@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { MapPin, Phone, Clock, Instagram, Facebook, ExternalLink, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Facebook, ExternalLink } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import type { Dict } from "@/lib/i18n";
 
 interface Props { t: Dict; }
@@ -86,7 +87,7 @@ export default function VisitaInNegozio({ t }: Props) {
               <ExternalLink size={13} /> {t.visita.cta1}
             </a>
             <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-              <MessageCircle size={13} /> {t.visita.cta2}
+              <WhatsAppIcon size={14} /> {t.visita.cta2}
             </a>
           </div>
         </div>
