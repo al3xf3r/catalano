@@ -68,8 +68,11 @@ export default function Brands({ t }: Props) {
           border-color:rgba(184,144,42,0.45);
         }
         .brand-logo {
-          width:100%; height:100%; object-fit:contain;
-          filter:brightness(0); opacity:0.55;
+          width: auto;
+          height: 282px;
+          max-width: 135px;
+          object-fit: contain;
+          filter:brightness(0); opacity:0.6;
           transition:opacity 0.3s, filter 0.3s;
         }
         .brand-card:hover .brand-logo {
