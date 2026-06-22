@@ -78,7 +78,7 @@ export default function Hero({ t, lang }: HeroProps) {
         .hero-btn-gold {
           display: inline-flex; align-items: center; gap: 0.625rem;
           padding: 1rem 2rem;
-          background: var(--gold); color: #1c1a17;
+          background: var(--gold); color: #fff;
           font-family: var(--font-jost);
           font-size: 0.6875rem; font-weight: 500;
           letter-spacing: 0.2em; text-transform: uppercase;
