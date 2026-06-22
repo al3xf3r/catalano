@@ -5,6 +5,8 @@ import { Menu, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import type { Dict, Lang } from "@/lib/i18n";
 
+interface NavbarProps { t: Dict; lang: Lang; }
+
 export default function Navbar({ t, lang }: NavbarProps) {
   const [scrolled, setScrolled] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
