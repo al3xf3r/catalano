@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import type { Dict, Lang } from "@/lib/i18n";
 
 interface HeroProps { t: Dict; lang: Lang; }
@@ -147,8 +148,21 @@ export default function Hero({ t, lang }: HeroProps) {
             <ArrowRight size={14} />
             {t.hero.cta1}
           </button>
-          <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" className="hero-btn-outline">
-            <MessageCircle size={14} />
+          <a href="https://wa.me/393245574398" target="_blank" rel="noopener noreferrer" style={{
+            display: "inline-flex", alignItems: "center", gap: "0.625rem",
+            padding: "1rem 2rem",
+            background: "var(--gold)", color: "#fff",
+            fontFamily: "var(--font-jost)",
+            fontSize: "0.6875rem", fontWeight: 400,
+            letterSpacing: "0.2em", textTransform: "uppercase",
+            textDecoration: "none", border: "none",
+            whiteSpace: "nowrap",
+            transition: "background 0.25s ease",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = "var(--gold-champagne)")}
+          onMouseLeave={e => (e.currentTarget.style.background = "var(--gold)")}
+          >
+            <WhatsAppIcon size={15} />
             {t.hero.cta2}
           </a>
         </div>
