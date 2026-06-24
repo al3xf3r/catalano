@@ -26,6 +26,10 @@ export default function CatalanoSignature() {
           opacity: 0.18;
           display: block;
         }
+        @media (max-width: 640px) {
+          .sig-logo { width: 20px; height: 20px; opacity: 0.38; }
+          .sig-track { gap: 2.5rem; }
+        }
         .sig-fade-l {
           position: absolute; left: 0; top: 0; bottom: 0; width: 100px;
           background: linear-gradient(to right, #ede7d9, transparent);
